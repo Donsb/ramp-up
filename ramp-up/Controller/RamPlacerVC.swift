@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RampPlacerVC.swift
 //  ramp-up
 //
 //  Created by Donald Belliveau on 2017-12-26.
@@ -10,10 +10,16 @@ import UIKit
 import SceneKit
 import ARKit
 
-class ViewController: UIViewController, ARSCNViewDelegate {
+class RampPlacerVC: UIViewController, ARSCNViewDelegate {
+    
+    // IBOutlets
 
     @IBOutlet var sceneView: ARSCNView!
     
+    // Functions
+    
+    
+    // View Did Load.
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,8 +34,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the scene to the view
         sceneView.scene = scene
-    }
+        
+    } // END View Did Load.
     
+    
+    // View Will Appear.
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -38,19 +47,24 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
         // Run the view's session
         sceneView.session.run(configuration)
-    }
+    } // END View Will Appear.
     
+    
+    // View Will Dissapear.
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         // Pause the view's session
         sceneView.session.pause()
-    }
+    } // END View Will Dissapear.
     
+    
+    // Did Receive Memory Warning.
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
-    }
+    } // END Did Receive Memory Warning.
+    
 
     // MARK: - ARSCNViewDelegate
     
@@ -63,18 +77,48 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
 */
     
+    
+    // Session - Did Fail With Warning.
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
         
-    }
+    } // END Session - Did Fail With Warning.
     
+    
+    // Session - Sessions Was Interupted.
     func sessionWasInterrupted(_ session: ARSession) {
         // Inform the user that the session has been interrupted, for example, by presenting an overlay
         
-    }
+    } // END Session - Sessions Was Interupted.
     
+    
+    // Session - Session Interruption Ended.
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
-    }
-}
+    } // END Session - Session Interruption Ended.
+    
+    
+} // END Class.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
