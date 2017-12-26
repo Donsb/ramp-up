@@ -12,6 +12,10 @@ import ARKit
 
 class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationControllerDelegate {
     
+    // Instance Variables
+    
+    var selectedRamp: String?
+    
     // IBOutlets
 
     @IBOutlet var sceneView: ARSCNView!
@@ -108,6 +112,20 @@ class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationCo
     } // END Adaptive Presentation Style for Controller.
     
     
+    // Touches Began.
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        guard let touch = touches.first else { return }
+        
+        // featurePoint finds the features in your scene (wall, chair,...)
+        let results = sceneView.hitTest(touch.location(in: sceneView), types: [.featurePoint])
+        guard let hitFeature = results.last else { return }
+        let hitTransform = SCNMatrix4(hitFeature.worldTransform)
+        let hitPosition = SCNVector3Make(hitTransform.m41, hitTransform.m42, hitTransform.m43)
+        
+    } // END Touches Began.
+    
+    
     // On Ramp Button Pressed.
     @IBAction func onRampBtnPressed(_ sender: UIButton) {
         
@@ -125,8 +143,14 @@ class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationCo
     
     // On Ramp Selected.
     func onRampSelected(_ rampName: String) {
-        
+        selectedRamp = rampName
     } // On Ramp Selected.
+    
+    
+    // Place Ramp.
+    func placeRamp(position: SCNVector3) {
+        
+    } // Place Ramp.
     
     
 } // END Class.

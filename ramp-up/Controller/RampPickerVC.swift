@@ -19,14 +19,17 @@ class RampPickerVC: UIViewController {
     
     // Initializer
     
+    // init.
     init(size: CGSize) {
         super.init(nibName: nil, bundle: nil)
         self.size = size
-    }
+    } // init.
     
+    
+    // Required Init.
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
+    } // Required Init.
     
     // Functions
     
@@ -96,8 +99,9 @@ class RampPickerVC: UIViewController {
     } // END Did Receive Memory Warning.
     
     
-    //
+    // Handle Tap.
     @objc func handleTap(_ gestureRecognizer: UIGestureRecognizer) {
+        
         let p = gestureRecognizer.location(in: sceneView)
         let hitResults = sceneView.hitTest(p, options: [:])
         
@@ -105,7 +109,8 @@ class RampPickerVC: UIViewController {
             let node = hitResults[0].node
             rampPlacerVC.onRampSelected(node.name!)
         }
-    }
+        
+    } // END Handle Tap.
     
     
 } // END Class.
