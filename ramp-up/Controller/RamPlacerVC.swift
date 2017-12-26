@@ -34,7 +34,8 @@ class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationCo
         sceneView.showsStatistics = true
         
         // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/quarter.dae")!
+        let scene = SCNScene(named: "art.scnassets/main.scn")!
+        sceneView.autoenablesDefaultLighting = true
         
         // Set the scene to the view
         sceneView.scene = scene
@@ -150,7 +151,12 @@ class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationCo
     
     // Place Ramp.
     func placeRamp(position: SCNVector3) {
-        
+        if let rampName = selectedRamp {
+            let ramp = Ramp.getRampForName(rampName: rampName)
+            ramp.position = position
+            ramp.scale = SCNVector3Make(0.01, 0.01, 0.01)
+            sceneView.scene.rootNode.addChildNode(ramp)
+        }
     } // Place Ramp.
     
     
