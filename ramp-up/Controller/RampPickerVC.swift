@@ -41,9 +41,19 @@ class RampPickerVC: UIViewController {
         let scene = SCNScene(named: "art.scnassets/ramps.scn")!
         sceneView.scene = scene
         
+        // Change camera of the popup to render a 2D image.
+        let camera = SCNCamera()
+        camera.usesOrthographicProjection = true
+        scene.rootNode.camera = camera
+        
         // Add the ramps to the pop up to choose from.
         let obj = SCNScene(named: "art.scnassets/pipe.dae")
         let node = obj?.rootNode.childNode(withName: "pipe", recursively: true)!
+        
+            // Make the ramp smaller.
+        node?.scale = SCNVector3Make(0.0022, 0.0022, 0.0022)
+        node?.position = SCNVector3Make(-1, 0.7, -1)
+        
         scene.rootNode.addChildNode(node!)
         preferredContentSize = size
         
