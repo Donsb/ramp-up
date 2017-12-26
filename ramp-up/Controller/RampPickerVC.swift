@@ -37,6 +37,8 @@ class RampPickerVC: UIViewController {
         sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height))
         view.insertSubview(sceneView, at: 0)
         
+        preferredContentSize = size
+        
         // Make the popup background black.
         let scene = SCNScene(named: "art.scnassets/ramps.scn")!
         sceneView.scene = scene
@@ -47,15 +49,31 @@ class RampPickerVC: UIViewController {
         scene.rootNode.camera = camera
         
         // Add the ramps to the pop up to choose from.
-        let obj = SCNScene(named: "art.scnassets/pipe.dae")
-        let node = obj?.rootNode.childNode(withName: "pipe", recursively: true)!
+        var obj = SCNScene(named: "art.scnassets/pipe.dae")
+        var node = obj?.rootNode.childNode(withName: "pipe", recursively: true)!
         
             // Make the ramp smaller.
         node?.scale = SCNVector3Make(0.0022, 0.0022, 0.0022)
         node?.position = SCNVector3Make(-1, 0.7, -1)
         
         scene.rootNode.addChildNode(node!)
-        preferredContentSize = size
+        
+        // Add pyramid.
+            /* NOTE:
+                We can reuse obj and node as when we place the pip in the node scene it won't go away.
+            */
+        obj = SCNScene(named: "art.scnassets/pyramid.dae")
+        node = obj?.rootNode.childNode(withName: "pyramid", recursively: true)!
+        node?.scale = SCNVector3Make(0.0058, 0.0058, 0.0058)
+        node?.position = SCNVector3Make(-1, -0.45, -1)
+        scene.rootNode.addChildNode(node!)
+        
+        // Add Quarter.
+        obj = SCNScene(named: "art.scnassets/quarter.dae")
+        node = obj?.rootNode.childNode(withName: "quarter", recursively: true)
+        node?.scale = SCNVector3Make(0.0058, 0.0058, 0.0058)
+        node?.position = SCNVector3Make(-1, -2.2, -1)
+        scene.rootNode.addChildNode(node!)
         
     } // END View Did Load.
     
