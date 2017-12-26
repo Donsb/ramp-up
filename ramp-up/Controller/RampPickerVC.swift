@@ -17,7 +17,7 @@ class RampPickerVC: UIViewController {
     var size: CGSize!
     weak var rampPlacerVC: RampPlacerVC!
     
-    // Initializer
+    // Initializers
     
     // init.
     init(size: CGSize) {
@@ -30,6 +30,7 @@ class RampPickerVC: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     } // Required Init.
+    
     
     // Functions
     
@@ -101,26 +102,5 @@ class RampPickerVC: UIViewController {
     
     
 } // END Class.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

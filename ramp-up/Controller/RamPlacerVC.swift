@@ -27,7 +27,6 @@ class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationCo
     
     // Functions
     
-    
     // View Did Load.
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +35,7 @@ class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationCo
         sceneView.delegate = self
         
         // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
+        sceneView.showsStatistics = false
         
         // Create a new scene
         let scene = SCNScene(named: "art.scnassets/main.scn")!
@@ -87,6 +86,7 @@ class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationCo
     } // END Did Receive Memory Warning.
     
 
+    
     // MARK: - ARSCNViewDelegate
     
 /*
@@ -222,25 +222,5 @@ class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationCo
     
     
 } // END Class.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

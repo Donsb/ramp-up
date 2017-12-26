@@ -70,17 +70,3 @@ class Ramp {
     
 } // END Class.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
