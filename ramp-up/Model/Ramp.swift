@@ -53,6 +53,21 @@ class Ramp {
     } // Start Rotation.
     
     
+    // Get Ramp For Name.
+    class func getRampForName(rampName: String)-> SCNNode {
+        switch rampName {
+            case "pipe":
+                return Ramp.getPipe()
+            case "pyramid":
+                return Ramp.getPyramid()
+            case "quarter":
+                return Ramp.getQuarter()
+            default:
+                return Ramp.getPipe()
+        }
+    } // END Get Ramp For Name.
+    
+    
 } // END Class.
 
 
