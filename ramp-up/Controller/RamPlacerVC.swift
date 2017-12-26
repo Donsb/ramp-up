@@ -101,13 +101,17 @@ class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationCo
     
     // Adaptive Presentation Style for Controller.
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        
+        /* This function is needed to return .none so it doesn't try to make your pop up full screen. */
         return .none
+        
     } // END Adaptive Presentation Style for Controller.
     
     
     // On Ramp Button Pressed.
     @IBAction func onRampBtnPressed(_ sender: UIButton) {
         
+        /* Create the Pop Up on the side where the button is. */
         let rampPickerVC = RampPickerVC(size: CGSize(width: 250, height: 500))
         rampPickerVC.modalPresentationStyle = .popover
         rampPickerVC.popoverPresentationController?.delegate = self
