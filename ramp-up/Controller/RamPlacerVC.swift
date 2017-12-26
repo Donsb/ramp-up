@@ -113,6 +113,7 @@ class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationCo
         
         /* Create the Pop Up on the side where the button is. */
         let rampPickerVC = RampPickerVC(size: CGSize(width: 250, height: 500))
+        rampPickerVC.rampPlacerVC = self
         rampPickerVC.modalPresentationStyle = .popover
         rampPickerVC.popoverPresentationController?.delegate = self
         present(rampPickerVC, animated: true, completion: nil)
@@ -121,6 +122,11 @@ class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationCo
         
     } // END On Ramp Button Pressed.
     
+    
+    // On Ramp Selected.
+    func onRampSelected(_ rampName: String) {
+        
+    } // On Ramp Selected.
     
     
 } // END Class.

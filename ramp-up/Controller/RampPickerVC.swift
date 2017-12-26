@@ -15,6 +15,7 @@ class RampPickerVC: UIViewController {
     
     var sceneView: SCNView!
     var size: CGSize!
+    weak var rampPlacerVC: RampPlacerVC!
     
     // Initializer
     
@@ -47,6 +48,10 @@ class RampPickerVC: UIViewController {
         let camera = SCNCamera()
         camera.usesOrthographicProjection = true
         scene.rootNode.camera = camera
+        
+        // Add Tap Recognizer.
+        let tap = UITapGestureRecognizer(target: self, action: #selector (handleTap(_:)))
+        sceneView.addGestureRecognizer(tap)
         
         // Make the ramps rotate.
         let rotate = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: CGFloat(0.01 * Double.pi), z: 0, duration: 0.1))
@@ -89,6 +94,18 @@ class RampPickerVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     } // END Did Receive Memory Warning.
+    
+    
+    //
+    @objc func handleTap(_ gestureRecognizer: UIGestureRecognizer) {
+        let p = gestureRecognizer.location(in: sceneView)
+        let hitResults = sceneView.hitTest(p, options: [:])
+        
+        if hitResults.count > 0 {
+            let node = hitResults[0].node
+            rampPlacerVC.onRampSelected(node.name!)
+        }
+    }
     
     
 } // END Class.
