@@ -14,7 +14,8 @@ class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationCo
     
     // Instance Variables
     
-    var selectedRamp: String?
+    var selectedRampName: String?
+    var selectedRamp: SCNNode?
     
     // IBOutlets
 
@@ -145,14 +146,15 @@ class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationCo
     
     // On Ramp Selected.
     func onRampSelected(_ rampName: String) {
-        selectedRamp = rampName
+        selectedRampName = rampName
     } // On Ramp Selected.
     
     
     // Place Ramp.
     func placeRamp(position: SCNVector3) {
-        if let rampName = selectedRamp {
+        if let rampName = selectedRampName {
             let ramp = Ramp.getRampForName(rampName: rampName)
+            selectedRamp = ramp
             ramp.position = position
             ramp.scale = SCNVector3Make(0.01, 0.01, 0.01)
             sceneView.scene.rootNode.addChildNode(ramp)
