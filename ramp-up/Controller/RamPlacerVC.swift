@@ -168,6 +168,7 @@ class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationCo
     // Place Ramp.
     func placeRamp(position: SCNVector3) {
         if let rampName = selectedRampName {
+            controls.isHidden = false
             let ramp = Ramp.getRampForName(rampName: rampName)
             selectedRamp = ramp
             ramp.position = position
