@@ -46,6 +46,13 @@ class Ramp {
     } // END Get Quarter.
     
     
+    // Start Rotation.
+    class func startRotation(node: SCNNode) {
+        let rotate = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: CGFloat(0.01 * Double.pi), z: 0, duration: 0.1))
+        node.runAction(rotate)
+    } // Start Rotation.
+    
+    
 } // END Class.
 
 

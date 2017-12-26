@@ -56,38 +56,20 @@ class RampPickerVC: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector (handleTap(_:)))
         sceneView.addGestureRecognizer(tap)
         
-        // Make the ramps rotate.
-        let rotate = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: CGFloat(0.01 * Double.pi), z: 0, duration: 0.1))
+        // Add Pipe to Pop Up.
+        let pipe = Ramp.getPipe()
+        Ramp.startRotation(node: pipe)
+        scene.rootNode.addChildNode(pipe)
         
-        // Add pipe to the pop up to choose from.
-        var obj = SCNScene(named: "art.scnassets/pipe.dae")
-        var node = obj?.rootNode.childNode(withName: "pipe", recursively: true)!
-        node?.runAction(rotate)
+        // Add Pyramid to Pop Up.
+        let pyramid = Ramp.getPyramid()
+        Ramp.startRotation(node: pyramid)
+        scene.rootNode.addChildNode(pyramid)
         
-            // Make the ramp smaller.
-        node?.scale = SCNVector3Make(0.0022, 0.0022, 0.0022)
-        node?.position = SCNVector3Make(-1, 0.7, -1)
-        
-        scene.rootNode.addChildNode(node!)
-        
-        // Add pyramid.
-            /* NOTE:
-                We can reuse obj and node as when we place the pip in the node scene it won't go away.
-            */
-        obj = SCNScene(named: "art.scnassets/pyramid.dae")
-        node = obj?.rootNode.childNode(withName: "pyramid", recursively: true)!
-        node?.runAction(rotate)
-        node?.scale = SCNVector3Make(0.0058, 0.0058, 0.0058)
-        node?.position = SCNVector3Make(-1, -0.45, -1)
-        scene.rootNode.addChildNode(node!)
-        
-        // Add Quarter.
-        obj = SCNScene(named: "art.scnassets/quarter.dae")
-        node = obj?.rootNode.childNode(withName: "quarter", recursively: true)
-        node?.runAction(rotate)
-        node?.scale = SCNVector3Make(0.0058, 0.0058, 0.0058)
-        node?.position = SCNVector3Make(-1, -2.2, -1)
-        scene.rootNode.addChildNode(node!)
+        // Add Quarter to Pop Up.
+        let quarter = Ramp.getQuarter()
+        Ramp.startRotation(node: quarter)
+        scene.rootNode.addChildNode(quarter)
         
     } // END View Did Load.
     
