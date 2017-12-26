@@ -88,7 +88,10 @@
                     </view>
                     <connections>
                         <outlet property="controls" destination="13r-Eg-96G" id="qgO-V8-xLB"/>
+                        <outlet property="downBtn" destination="0OB-YQ-lAj" id="DB5-Qd-LY1"/>
+                        <outlet property="rotateBtn" destination="jji-HQ-Ytf" id="jFk-zU-ORY"/>
                         <outlet property="sceneView" destination="XvB-rN-2Da" id="BrJ-Wb-mJL"/>
+                        <outlet property="upBtn" destination="eLP-ZS-M9Y" id="XKA-GA-I2d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>

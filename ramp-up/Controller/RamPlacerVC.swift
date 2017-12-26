@@ -21,6 +21,9 @@ class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationCo
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var controls: UIStackView!
+    @IBOutlet weak var rotateBtn: UIButton!
+    @IBOutlet weak var upBtn: UIButton!
+    @IBOutlet weak var downBtn: UIButton!
     
     // Functions
     
@@ -41,6 +44,17 @@ class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationCo
         
         // Set the scene to the view
         sceneView.scene = scene
+        
+        // Gesture Recognizers for our Control Buttons.
+        let gesture1 = UILongPressGestureRecognizer(target: self, action: #selector(onLongPress(gesture:)))
+        let gesture2 = UILongPressGestureRecognizer(target: self, action: #selector(onLongPress(gesture:)))
+        let gesture3 = UILongPressGestureRecognizer(target: self, action: #selector(onLongPress(gesture:)))
+        gesture1.minimumPressDuration = 0.1
+        gesture2.minimumPressDuration = 0.1
+        gesture3.minimumPressDuration = 0.1
+        rotateBtn.addGestureRecognizer(gesture1)
+        upBtn.addGestureRecognizer(gesture2)
+        downBtn.addGestureRecognizer(gesture3)
         
     } // END View Did Load.
     
@@ -170,6 +184,12 @@ class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationCo
             selectedRamp = nil
         }
     } // On Remove Pressed.
+    
+    
+    //
+    @objc func onLongPress(gesture: UILongPressGestureRecognizer) {
+        
+    }
     
     
 } // END Class.
