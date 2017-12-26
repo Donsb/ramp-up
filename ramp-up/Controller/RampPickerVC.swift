@@ -32,6 +32,7 @@ class RampPickerVC: UIViewController {
     // View Did Load.
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.frame = CGRect(origin: CGPoint.zero, size: size)
         sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height))
         view.insertSubview(sceneView, at: 0)
@@ -40,7 +41,12 @@ class RampPickerVC: UIViewController {
         let scene = SCNScene(named: "art.scnassets/ramps.scn")!
         sceneView.scene = scene
         
+        // Add the ramps to the pop up to choose from.
+        let obj = SCNScene(named: "art.scnassets/pipe.dae")
+        let node = obj?.rootNode.childNode(withName: "pipe", recursively: true)!
+        scene.rootNode.addChildNode(node!)
         preferredContentSize = size
+        
     } // END View Did Load.
     
     
