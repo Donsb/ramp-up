@@ -186,10 +186,38 @@ class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationCo
     } // On Remove Pressed.
     
     
-    //
+    // On Long Press.
     @objc func onLongPress(gesture: UILongPressGestureRecognizer) {
         
-    }
+        if let ramp = selectedRamp {
+            
+            if gesture.state == .ended {
+                
+                ramp.removeAllActions()
+                
+            } else if gesture.state == .began {
+                
+                if gesture.view === rotateBtn {
+                    /*
+                     NOTE: == checks agains type and value.  === also checks reference location.
+                     */
+                    let rotate = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: CGFloat(0.08 * Double.pi), z: 0, duration: 0.1))
+                    ramp.runAction(rotate)
+                    
+                } else if gesture.view === upBtn {
+                    let move = SCNAction.repeatForever(SCNAction.moveBy(x: 0, y: 0.08, z: 0, duration: 0.1))
+                    ramp.runAction(move)
+                    
+                } else if gesture.view === downBtn {
+                    let move = SCNAction.repeatForever(SCNAction.moveBy(x: 0, y: -0.08, z: 0, duration: 0.1))
+                    ramp.runAction(move)
+                }
+                
+            }
+            
+        }
+        
+    } // END On Long Press.
     
     
 } // END Class.
