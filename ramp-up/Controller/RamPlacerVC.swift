@@ -20,6 +20,7 @@ class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationCo
     // IBOutlets
 
     @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet weak var controls: UIStackView!
     
     // Functions
     
@@ -160,6 +161,15 @@ class RampPlacerVC: UIViewController, ARSCNViewDelegate, UIPopoverPresentationCo
             sceneView.scene.rootNode.addChildNode(ramp)
         }
     } // Place Ramp.
+    
+    
+    // On Remove Pressed.
+    @IBAction func onRemovePressed(_ sender: Any) {
+        if let ramp = selectedRamp {
+            ramp.removeFromParentNode()
+            selectedRamp = nil
+        }
+    } // On Remove Pressed.
     
     
 } // END Class.
